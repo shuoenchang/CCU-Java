@@ -17,9 +17,11 @@ public class HandCards {
 		value = -1;
 	}
 	
-	// insertCard into HandCards
+	/* insertCard into HandCards */
 	public void insertCard(Card insert) {
 		inHand[currentInsert] = insert;
+		
+		// count for face and suit
 		for(int i=0; i<FACES.length; i++) 
 			if(inHand[currentInsert].getFace() == FACES[i])
 				countOfFace[i]++;
@@ -33,7 +35,7 @@ public class HandCards {
 		int ans = -1;
 		for(int i=0; i<FACES.length; i++) 
 			if(countOfFace[i] == 2)
-				ans = i;
+				ans = i;	// the larger number
 		return ans;
 	}
 	
@@ -43,7 +45,7 @@ public class HandCards {
 		for(int i=0; i<FACES.length; i++)
 			if(countOfFace[i] == 2) {
 				count++;
-				ans = i;
+				ans = i;	// the larger number
 			}
 		if(count<2)
 			ans = -1;
@@ -73,7 +75,8 @@ public class HandCards {
 		int ans = -1;
 		for(int i=0; i<SUITS.length; i++)
 			if(countOfSuit[i] == 5) 
-				ans = 0;	// every suit has the same priority
+				ans = 0;	
+		// For flush, each face has only one, will check in Compare
 		return ans;
 	}
 	
@@ -81,22 +84,22 @@ public class HandCards {
 	public int Straight() {
 		int ans = -1;
 		
-		// check if continue 5 cards
+		// check if consecutive 5 cards
 		for(int i=0; i+4<FACES.length; i++) {
 			for(int j=0; j<5; j++) {
 				if(countOfFace[i+j] < 1)	// no card
 					break;
-				if(j == 4)	// continue 5 cards
+				if(j == 4)	// consecutive 5 cards
 					ans = i+j;
 			}
 		}
 		
-		// if there are Ace, need to check if exist 1 2 3 4 5
-		if(countOfFace[FACES.length-1] > 0) {
+		// if there are Aces, need to check if exist 1 2 3 4 5
+		if(countOfFace[FACES.length-1] > 0) {	// exist Aces
 			for(int i=0; i<4; i++) {
 				if(countOfFace[i] < 1)	// no card
 					break;
-				if(i == 3)
+				if(i == 3)	// exist 2 3 4 5
 					ans = 3;
 			}
 		}
@@ -121,7 +124,6 @@ public class HandCards {
 	 * FourOfKind > FullHouse > Flush > Straight > ThreeOfKind >
 	 * TwoPair > OnePair
 	 */
-	
 	public String Calculate() {
 		int sol;
 		sol = this.FourOfKind();
@@ -174,12 +176,6 @@ public class HandCards {
 			return "OnePair";
 		}
 		
-		for(int i=12; i>=0; i--) {
-			if(countOfFace[i] > 0) {
-				value = i;
-				break;
-			}
-		}
 		return "None";
 	}
 	
@@ -195,11 +191,23 @@ public class HandCards {
 			else if(this.value < opponent.value)
 				return -1;
 		}
+		
+		/*
+		 *  1. it is "None" 
+		 *  2. value is the same, need to compare for others
+		 *  3. Flush
+		 */
+		for(int i=12; i>=0; i--) {
+			if(this.countOfFace[i] > opponent.countOfFace[i])
+				return 1;
+			if(this.countOfFace[i] < opponent.countOfFace[i])
+				return -1;
+		}
 		return 0;
 	}
 	
+	/* print Card in the object */
 	public void Print() {
-
 		for(int i=0; i<currentInsert; i++)
 			System.out.println(inHand[i].toString());
 	}

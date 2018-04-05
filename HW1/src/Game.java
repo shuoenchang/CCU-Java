@@ -13,8 +13,8 @@ public class Game {
 		for(int i=0; i<5; i++) {
 			first.insertCard(myDeckOfCards.dealCard());
 			second.insertCard(myDeckOfCards.dealCard());
-			third.insertCard(myDeckOfCards.dealCard());
-			forth.insertCard(myDeckOfCards.dealCard());
+//			third.insertCard(myDeckOfCards.dealCard());
+//			forth.insertCard(myDeckOfCards.dealCard());
 		}
 		
 		System.out.printf("First------%s\n", first.Calculate());
@@ -28,13 +28,13 @@ public class Game {
 		System.out.printf("\nForth------%s\n", forth.Calculate());
 		forth.Print();
 		
-//		System.out.print("\n\nThe winner is: ");
-//		int sol = first.CompareTo(second);
-//		if(sol > 0)
-//			System.out.print("First");
-//		else if(sol < 0)
-//			System.out.print("Second");
-//		else
-//			System.out.print("Draw");
+		System.out.print("\n\nThe winner is: ");
+		int sol = first.CompareTo(second);
+		if(sol > 0)
+			System.out.print("First");
+		else if(sol < 0)
+			System.out.print("Second");
+		else
+			System.out.print("Draw");
 	}
 }
