@@ -33,8 +33,8 @@ public class DeckOfCards {
 		 * 		exchange a[j] and a[i]
 		 */
 		for(int i = NUMBER_OF_CARDS-1; i>0; i--) {
-			// select a random number between 0 and i
-			int j = randomNumbers.nextInt(i);
+			/* select a random number between 0 and i (both inclusive) */
+			int j = randomNumbers.nextInt(i+1);
 			
 			// Swap
 			Card temp = deck[i];

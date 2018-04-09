@@ -98,7 +98,7 @@ public class HandCards {
 		// if there are Aces, need to check if exist 1 2 3 4 5
 		if(countOfFace[FACES.length-1] > 0) {	// exist Aces
 			for(int i=0; i<4; i++) {
-				if(countOfFace[i] < 1)	// no card
+				if(countOfFace[i] < 1)	// if no card
 					break;
 				if(i == 3)	// exist 2 3 4 5
 					ans = 3;
@@ -127,8 +127,8 @@ public class HandCards {
 	 */
 	public String Calculate() {
 		int sol;
-		sol = this.FourOfKind();
 		
+		sol = this.FourOfKind();
 		if(sol > -1) {
 			best = 6;
 			value = sol;
@@ -199,9 +199,9 @@ public class HandCards {
 		
 		if(best == 1) {	
 			for(int i=12; i>=0; i--) {
-				if(this.countOfFace[i] == 2)
-					if(opponent.countOfFace[i] != 2)
-						return 1;
+				if(this.countOfFace[i] == 2)	// when this have pair
+					if(opponent.countOfFace[i] != 2)	// but opponent don't
+						return 1;	// this win
 				if(opponent.countOfFace[i] == 2)
 					if(this.countOfFace[i] != 2)
 						return -1;
