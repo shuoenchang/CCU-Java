@@ -1,5 +1,6 @@
 
 public class HandCards {
+	/* index of FACES can be used to present faces(every "ans" in the metod) */
 	private static final String[] FACES = { "Deuce", "Three", "Four", "Five", "Six",
 			"Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
 	private static final String[] SUITS = { "Diamonds", "Clubs", "Hearts", "Spades" };
@@ -192,11 +193,27 @@ public class HandCards {
 				return -1;
 		}
 		
+		/* 
+		 * Two pair need to compare for another pair
+		 */
+		
+		if(best == 1) {	
+			for(int i=12; i>=0; i--) {
+				if(this.countOfFace[i] == 2)
+					if(opponent.countOfFace[i] != 2)
+						return 1;
+				if(opponent.countOfFace[i] == 2)
+					if(this.countOfFace[i] != 2)
+						return -1;
+			}
+		}
+		
 		/*
 		 *  1. it is "None" 
 		 *  2. value is the same, need to compare for others
 		 *  3. Flush
 		 */
+		
 		for(int i=12; i>=0; i--) {
 			if(this.countOfFace[i] > opponent.countOfFace[i])
 				return 1;

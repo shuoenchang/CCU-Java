@@ -23,18 +23,18 @@ public class Game {
 		System.out.printf("\nSecond------%s\n", second.Calculate());
 		second.Print();
 		
-		System.out.printf("\nThird------%s\n", third.Calculate());
-		third.Print();
-		System.out.printf("\nForth------%s\n", forth.Calculate());
-		forth.Print();
+//		System.out.printf("\nThird------%s\n", third.Calculate());
+//		third.Print();
+//		System.out.printf("\nForth------%s\n", forth.Calculate());
+//		forth.Print();
 		
 		System.out.print("\n\nThe winner is: ");
 		int sol = first.CompareTo(second);
 		if(sol > 0)
-			System.out.print("First");
+			System.out.println("First");
 		else if(sol < 0)
-			System.out.print("Second");
+			System.out.println("Second");
 		else
-			System.out.print("Draw");
+			System.out.println("Draw");
 	}
 }
