@@ -1,6 +1,6 @@
 
 public class Bicycle implements CarbonFootprint {
-	// 0.0128 pounds per mile = 5.806
+	// 0.0128 pounds per mile = 5.806 g per mile
 	// http://bit.ly/2JFDiIJ
 	
 	private static final double gCO2PerMile = 5.806;

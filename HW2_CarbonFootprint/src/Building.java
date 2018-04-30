@@ -1,7 +1,7 @@
 
 public class Building implements CarbonFootprint {
-	//
-	//
+	// 689.551 g per kWh
+	// http://bit.ly/2rbgr09
 	
 	private static final double gCO2PerkWh = 689.551;
 	private static final int month = 12; 
