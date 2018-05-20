@@ -5,6 +5,7 @@ public abstract class MyBoundedShape extends MyShape {
 	private boolean filled;
 	
 	public MyBoundedShape() { this(0, 0, 0, 0, Color.BLACK, false); }
+	public MyBoundedShape(boolean filled) { this(0, 0, 0, 0, Color.BLACK, filled); }
 	public MyBoundedShape(int x1, int y1, int x2, int y2, Color color, boolean filled) {
 		super(x1, y1, x2, y2, color);
 		setFilled(filled);
