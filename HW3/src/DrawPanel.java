@@ -95,6 +95,7 @@ public class DrawPanel extends JPanel{
 			mouseMoved(event);
 			currentShape.setX2(event.getX());
 			currentShape.setY2(event.getY());
+			shapes[shapeCount] = currentShape;
 			currentShape = null;
 			repaint();
 		}
