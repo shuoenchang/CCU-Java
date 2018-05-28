@@ -1,13 +1,13 @@
 
-public class Bicycle implements CarbonFootprint {
-	// 0.0128 pounds per mile = 5.806 g per mile
+public class Car implements CarbonFootprint {
+	// 1.4 pounds per mile = 635.029 g per mile
 	// http://bit.ly/2JFDiIJ
 	
-	private static final double gCO2PerMile = 5.806;
+	private static final double gCO2PerMile = 635.029;
 	private static final int month = 12; 
 	private double milesPerMonth;
 	
-	public Bicycle(double milesPerMonth) {
+	public Car(double milesPerMonth) {
 		if(milesPerMonth < 0) 
 			throw new IllegalArgumentException("miles must be greater than 0.");
 		this.milesPerMonth = milesPerMonth;
@@ -23,13 +23,12 @@ public class Bicycle implements CarbonFootprint {
 	
 	@Override
 	public String toString() {
-		return String.format("Bike has been used %.3f miles per month.", getMiles());
+		return String.format("Car has been used %.4f miles per month.", getMiles());
 	}
 	
 	@Override
 	public double getCarbonFootprint() {
 		return getMiles() * gCO2PerMile * month;
 	}
-	
 
 }

@@ -23,7 +23,7 @@ public class Building implements CarbonFootprint {
 	
 	@Override
 	public String toString() {
-		return String.format("Building has been used %.3f kWhs per month.", getkWhs());
+		return String.format("Building has been used %.4f kWhs per month.", getkWhs());
 	}
 	
 	@Override
