@@ -15,6 +15,13 @@ public class BallPanel extends JPanel {
 		balls = new ArrayList<Ball>();
 		MouseHandler handler = new MouseHandler();
 		addMouseListener(handler);
+		
+		for(int i=0; i<20; i++) {
+			Runnable r = new Ball(BallPanel.this);
+			add((Ball) r);
+			Thread t = new Thread(r);
+			t.start();
+		}
 	}
 	
 	@Override
@@ -40,5 +47,4 @@ public class BallPanel extends JPanel {
 			t.start();
 		}
 	}
-
 }

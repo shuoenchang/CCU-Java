@@ -21,19 +21,19 @@ public class Ball implements Runnable{
 		radius = rand.nextInt(50)+10;
 		this.midX = midX;
 		this.midY = midY;
-		speedX = (rand.nextInt(15)+1) * (2*rand.nextInt(2)-1);
-		speedY = (rand.nextInt(15)+1) * (2*rand.nextInt(2)-1);
+		speedX = (rand.nextInt(10)+1) * (2*rand.nextInt(2)-1);
+		speedY = (rand.nextInt(10)+1) * (2*rand.nextInt(2)-1);
 		color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
 	}
 	
 	public Ball(JPanel board) {
-		this(board, rand.nextInt(board.getWidth()), rand.nextInt(board.getHeight()));
+		this(board, rand.nextInt(800), rand.nextInt(600));
 	}
 
 	@Override
 	public void run() {
 		while(true) {
-			this.update();
+			update();
 			board.repaint();
 			try {
 				Thread.sleep(30);
@@ -48,7 +48,7 @@ public class Ball implements Runnable{
 		
 		final float HEIGHT = board.getHeight();
 		final float WIDTH = board.getWidth();
-		
+
 		midX += speedX;
 		midY += speedY;
 		if(midX - radius < 0) {
@@ -75,5 +75,10 @@ public class Ball implements Runnable{
 	
 	public Ellipse2D getShape(){
 		return new Ellipse2D.Double(midX-radius, midY-radius, 2*radius, 2*radius);
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("(%f, %f)%n", midX, midY);
 	}
 }

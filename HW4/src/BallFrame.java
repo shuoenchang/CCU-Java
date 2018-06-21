@@ -7,6 +7,5 @@ public class BallFrame extends JFrame {
 		super("Bouncing Ball");
 		board = new BallPanel();
 		add(board);
-		board.repaint();
 	}
 }
