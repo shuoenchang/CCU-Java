@@ -21,8 +21,8 @@ public class Ball implements Runnable{
 		radius = rand.nextInt(50)+10;
 		this.midX = midX;
 		this.midY = midY;
-		speedX = rand.nextInt(15)+1 * (2*rand.nextInt(2)-1);
-		speedY = rand.nextInt(15)+1 * (2*rand.nextInt(2)-1);
+		speedX = (rand.nextInt(15)+1) * (2*rand.nextInt(2)-1);
+		speedY = (rand.nextInt(15)+1) * (2*rand.nextInt(2)-1);
 		color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
 	}
 	
