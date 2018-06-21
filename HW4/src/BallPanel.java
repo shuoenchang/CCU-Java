@@ -33,9 +33,9 @@ public class BallPanel extends JPanel {
 	
 	private final class MouseHandler extends MouseAdapter implements MouseMotionListener {
 		public void mousePressed(MouseEvent event) {
-			Ball b = new Ball(BallPanel.this);
-			add(b);
-			Runnable r = new BallRunnable(b, BallPanel.this);
+
+			Runnable r = new Ball(BallPanel.this, event.getX(), event.getY());
+			add((Ball) r);
 			Thread t = new Thread(r);
 			t.start();
 		}

@@ -15,19 +15,35 @@ public class Ball implements Runnable{
 	private final JPanel board;
 	private static final Random rand = new Random();
 	
-	public Ball(JPanel board) {
+	public Ball(JPanel board, float midX, float midY) {
 		// TODO Auto-generated constructor stub
 		this.board = board;
 		radius = rand.nextInt(50)+10;
-		midX = rand.nextInt(board.getWidth()) + radius;
-		midY = rand.nextInt(board.getHeight()) + radius;
-		speedX = rand.nextInt(15)+1;
-		speedY = rand.nextInt(15)+1;
+		this.midX = midX;
+		this.midY = midY;
+		speedX = rand.nextInt(15)+1 * (2*rand.nextInt(2)-1);
+		speedY = rand.nextInt(15)+1 * (2*rand.nextInt(2)-1);
 		color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+	}
+	
+	public Ball(JPanel board) {
+		this(board, rand.nextInt(board.getWidth()), rand.nextInt(board.getHeight()));
 	}
 
 	@Override
 	public void run() {
+		while(true) {
+			this.update();
+			board.repaint();
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void update() {
 		// TODO Auto-generated method stub
 		
 		final float HEIGHT = board.getHeight();
